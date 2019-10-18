@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+// WebView
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +10,8 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private webview: WebView) {}
+
+  img = this.webview.convertFileSrc('https://knowinggod.co.za/')
 
 }
