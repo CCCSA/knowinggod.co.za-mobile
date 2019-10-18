@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { HomePage } from './home.page';
 
 @NgModule({

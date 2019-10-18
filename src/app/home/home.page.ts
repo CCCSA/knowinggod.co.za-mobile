@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-// WebView
-import { WebView } from '@ionic-native/ionic-webview/ngx';
+// appbrowserView
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,13 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  [x: string]: any;
 
-  constructor(private webview: WebView) {}
+  constructor(private iab: InAppBrowser) {
+    const browser = this.iab.create('https://knowinggod.co.za/');
+  }
 
-  img = this.webview.convertFileSrc('https://knowinggod.co.za/');
-
+  onclick() {
+  this.lab.create('https://knowinggod.co.za/');
+  }
 }
