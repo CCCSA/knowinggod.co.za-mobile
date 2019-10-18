@@ -12,6 +12,6 @@ export class HomePage {
 
   constructor(private webview: WebView) {}
 
-  img = this.webview.convertFileSrc('https://knowinggod.co.za/')
+  img = this.webview.convertFileSrc('https://knowinggod.co.za/');
 
 }
