@@ -31,6 +31,10 @@ export class HomePage {
 
 
     const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'location=no,hidden=yes');
+    browser.on('loadstart').subscribe(() => {
+      browser.hide();
+    });
+  
     browser.on('loadstop').subscribe(async () => {
       const jsCode = await this.readAsset.asText('assets/js/externaljsfile.js');
       browser.executeScript({ code: jsCode });
