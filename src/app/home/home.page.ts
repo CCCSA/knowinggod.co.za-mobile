@@ -15,7 +15,7 @@ export class HomePage {
   [x: string]: any;
 
   constructor(private iab: InAppBrowser, private http: HttpClient) {
-    const browser = this.iab.create('https://courses.knowinggod.co.za/login', '_blank', 'location=no');
+    const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'hideurlbar=yes');
     browser.on('loadstop').subscribe(async () => {
       console.log('loaded');
         this.http.get('assets/js/externaljsfile.js', { responseType: 'text' }).subscribe(
@@ -29,9 +29,5 @@ export class HomePage {
             }
           });
     });
-  }
-
-  onclick() {
-    this.iab.create('https://courses.knowinggod.co.za/login');
   }
 }
