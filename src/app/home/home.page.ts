@@ -17,6 +17,6 @@ export class HomePage {
   }
 
   onclick() {
-  this.lab.create('https://knowinggod.co.za/');
+  this.iab.create('https://knowinggod.co.za/');
   }
 }
