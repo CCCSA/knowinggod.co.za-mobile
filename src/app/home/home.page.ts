@@ -25,9 +25,10 @@ export class HomePage {
       {
         if(window.confirm("Would you like to leave?"))
         {
-          navigator["app"].exitApp();        }
+          navigator["app"].exitApp();
+        }
       }
-    })
+    });
 
 
     const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'location=no,hidden=yes');
