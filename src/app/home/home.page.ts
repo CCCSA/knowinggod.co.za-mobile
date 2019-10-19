@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 // appbrowserView
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { HttpClient } from '@angular/common/http';
 import { ReadAssetTextService } from '../read-asset-text.service';
 
-declare var externalJsFunction;
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -14,9 +12,25 @@ declare var externalJsFunction;
 })
 export class HomePage {
   [x: string]: any;
+  subscribe: any;
 
-  constructor(private iab: InAppBrowser, private http: HttpClient, private readAsset: ReadAssetTextService) {
-    const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'hideurlbar=yes');
+  constructor(
+    private iab: InAppBrowser,
+    public platform: Platform,
+    private readAsset: ReadAssetTextService,
+  ) {
+
+    this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
+      if(this.constructor.name == "HomePage")
+      {
+        if(window.confirm("Would you like to leave?"))
+        {
+          navigator["app"].exitApp();        }
+      }
+    })
+
+
+    const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'location=no,hidden=yes');
     browser.on('loadstop').subscribe(async () => {
       const jsCode = await this.readAsset.asText('assets/js/externaljsfile.js');
       browser.executeScript({ code: jsCode });
@@ -24,7 +38,8 @@ export class HomePage {
       browser.insertCSS({
         code : ".header__button { visibility: hidden; }"
       });
-      console.log('loaded');
+
+      browser.show();
     });
   }
 }
