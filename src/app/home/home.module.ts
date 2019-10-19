@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ReadAssetTextService } from '../read-asset-text.service';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HomePage } from './home.page';
       }
     ])
   ],
+  providers: [ReadAssetTextService],
   declarations: [HomePage]
 })
 export class HomePageModule {}
