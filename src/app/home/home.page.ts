@@ -15,7 +15,7 @@ export class HomePage {
   [x: string]: any;
 
   constructor(private iab: InAppBrowser, private http: HttpClient) {
-    const browser = this.iab.create('https://courses.knowinggod.co.za/login', '_blank', 'location=no');
+    const browser = this.iab.create('https://courses.knowinggod.co.za/my-courses', '_blank', 'hideurlbar=yes');
     browser.on('loadstop').subscribe(async () => {
       browser.insertCSS({
         code : ".header__button { visibility: hidden; }"
@@ -32,11 +32,5 @@ export class HomePage {
             }
           });
     });
-
- 
   }
-
-  // onclick() {
-  //   this.iab.create('https://courses.knowinggod.co.za/login');
-  // }
 }
