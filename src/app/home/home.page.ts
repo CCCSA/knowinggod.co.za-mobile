@@ -13,7 +13,7 @@ export class HomePage {
   [x: string]: any;
 
   constructor(private iab: InAppBrowser) {
-    const browser = this.iab.create('https://knowinggod.co.za/');
+    const browser = this.iab.create('https://courses.knowinggod.co.za/');
   }
 
   onclick() {
